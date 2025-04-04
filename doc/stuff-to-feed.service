@@ -1,0 +1,17 @@
+[Unit]
+Description=Stuff to Feed
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+WorkingDirectory=/srv/stuff-to-feed/src
+Environment="PATH=/srv/stuff-to-feed/bin"
+EnvironmentFile=/srv/stuff-to-feed/.envrc
+ExecStart=/srv/stuff-to-feed/.venv/bin/gunicorn main:app --bind 127.0.0.1:5001
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
