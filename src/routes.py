@@ -5,7 +5,7 @@ from telegram import TelegramParser
 app = Flask(__name__)
 
 
-@app.route("/rai/<slug>")
+@app.route("/rai_play_sound/<slug>")
 def get_feed(slug):
     rai_parser = RaiParser(slug)
     return rai_parser(), 200, {"Content-Type": "application/rss+xml"}
